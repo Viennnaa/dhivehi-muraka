@@ -7,5 +7,5 @@ B="$HOME/.claude/skills/gstack/browse/dist/browse"
 "$B" viewport 1600x900 --scale 2 >/dev/null
 "$B" goto "file://$PWD/banner.html" >/dev/null
 sleep 2
-"$B" screenshot "$PWD/../docs/specimen.png" --selector ".card" >/dev/null
+"$B" screenshot "$PWD/../../documentation/specimen.png" --selector ".card" >/dev/null
 echo "docs/specimen.png rendered"

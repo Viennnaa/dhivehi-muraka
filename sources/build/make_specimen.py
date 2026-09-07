@@ -4,7 +4,7 @@ import os, sys, time, json
 from fontTools.ttLib import TTFont
 
 HERE = os.path.dirname(os.path.abspath(__file__))
-TTF = sys.argv[1] if len(sys.argv) > 1 else os.path.join(HERE, "DhivehiMuraka-Regular.ttf")
+TTF = sys.argv[1] if len(sys.argv) > 1 else os.path.join(HERE, "..", "..", "fonts", "ttf", "DhivehiMuraka-Regular.ttf")
 
 CONS = [(0x780,"haa"),(0x781,"shaviyani"),(0x782,"noonu"),(0x783,"raa"),(0x784,"baa"),
         (0x785,"lhaviyani"),(0x786,"kaafu"),(0x787,"alifu"),(0x788,"vaavu"),(0x789,"meemu"),
@@ -38,7 +38,7 @@ n = len(have)
 
 html = """<meta charset="utf-8"><title>Dhivehi Muraka — specimen</title>
 <style>
-@font-face{font-family:DF;src:url('%s?v=%d')}
+@font-face{font-family:DF;src:url('DhivehiMuraka-Regular.ttf?v=%d')}
 body{margin:0;padding:30px 34px;background:#fff;color:#111;max-width:1180px;
      font:14px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
 h1{font-size:26px;margin:0 0 4px}h1 span{color:#999;font-weight:400;font-size:17px}
@@ -79,13 +79,13 @@ h2{font-size:12px;text-transform:uppercase;letter-spacing:1px;color:#888;
 <h2>Fili — shown on ހ</h2><div class="grid">%s</div>
 <p class="legend"><span class="k"></span>not drawn yet</p>
 <p class="ts">rebuilt %s · %d letters</p>
-""" % (os.path.basename(TTF), int(time.time()), n,
+""" % (int(time.time()), n,
        sum(1 for c, _ in CONS if c in have), sum(1 for c, _ in ARAB if c in have),
        sum(1 for c, _ in FILI if c in have), 50 - n,
        WORDS[0], WORDS[1], WORDS[2], ramp,
        grid(CONS), grid(ARAB), grid(FILI),
        time.strftime("%d %b %Y, %H:%M"), n)
 
-out = os.path.join(HERE, "specimen.html")
+out = os.path.join(HERE, "..", "..", "docs", "specimen.html")
 open(out, "w", encoding="utf-8").write(html)
 print("specimen.html rebuilt — %d letters" % n)

@@ -14,8 +14,8 @@ from fontTools.pens.ttGlyphPen import TTGlyphPen
 from fontTools.pens.recordingPen import DecomposingRecordingPen
 
 HERE = os.path.dirname(os.path.abspath(__file__))
-TARGET = sys.argv[1] if len(sys.argv) > 1 else os.path.join(HERE, "DhivehiMuraka-Regular.ttf")
-LATIN = sys.argv[2] if len(sys.argv) > 2 else os.path.join(HERE, ".cache", "latin-source.ttf")
+TARGET = sys.argv[1] if len(sys.argv) > 1 else os.path.join(HERE, "..", "..", "fonts", "ttf", "DhivehiMuraka-Regular.ttf")
+LATIN = sys.argv[2] if len(sys.argv) > 2 else os.path.join(HERE, "..", "latin", "Inter-Regular.ttf")
 
 
 def add_dotted_circle(font, lat):

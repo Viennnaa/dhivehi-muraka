@@ -15,8 +15,8 @@ from fontTools.ttLib import TTFont
 from fontTools.feaLib.builder import addOpenTypeFeatures
 
 HERE = os.path.dirname(os.path.abspath(__file__))
-LATIN = os.path.join(HERE, ".cache", "latin-source.ttf")
-SRC = sys.argv[1] if len(sys.argv) > 1 else os.path.join(HERE, "DhivehiMuraka-Regular.ttf")
+LATIN = os.path.join(HERE, "..", "latin", "Inter-Regular.ttf")
+SRC = sys.argv[1] if len(sys.argv) > 1 else os.path.join(HERE, "..", "..", "fonts", "ttf", "DhivehiMuraka-Regular.ttf")
 DST = sys.argv[2] if len(sys.argv) > 2 else SRC
 
 CONSONANTS = list(range(0x780, 0x798)) + [0x7B1]          # 24 base + naviyani

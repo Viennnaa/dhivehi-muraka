@@ -18,7 +18,7 @@ from fontTools.misc.transform import Scale
 HERE = os.path.dirname(os.path.abspath(__file__))
 LATIN = sys.argv[1] if len(sys.argv) > 1 else os.path.join(
     HERE, "..", "..", "..", "..", "latin", "Inter-400.ttf")
-TARGET = sys.argv[2] if len(sys.argv) > 2 else os.path.join(HERE, "DhivehiMuraka-Regular.ttf")
+TARGET = sys.argv[2] if len(sys.argv) > 2 else os.path.join(HERE, "..", "..", "fonts", "ttf", "DhivehiMuraka-Regular.ttf")
 
 # GF Latin Core: what Google Fonts expects a font to cover for Latin.
 CODEPOINTS = (

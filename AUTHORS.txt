@@ -1,0 +1,11 @@
+# This is the official list of project authors for copyright purposes.
+# This file is distinct from the CONTRIBUTORS.txt file.
+# See the latter for an explanation.
+# Names should be added to this file as:
+# Name or Organization <email address>
+# The email address is not required for organizations.
+
+Ashrag Rasheed <asrag71@gmail.com>
+
+# Latin glyphs are from Inter, used under the SIL Open Font License 1.1:
+# Rasmus Andersson <https://github.com/rsms/inter>

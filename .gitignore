@@ -2,9 +2,13 @@
 muraka-editor/font_data.local.js
 muraka-editor/.cache/
 refs/
-build/
+/build/
 proofs/
 sources/_agy_experiment/
 .DS_Store
 __pycache__/
 .gstack/
+muraka-editor/
+tools/
+editor.html
+starter-haa.json

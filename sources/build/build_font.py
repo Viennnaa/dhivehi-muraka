@@ -24,7 +24,7 @@ OFL_DESC = ("This Font Software is licensed under the SIL Open Font License, "
             "https://openfontlicense.org")
 
 
-REF_DATA = os.path.expanduser("~/Downloads/DhivehiMuraka/font_data.js")
+REF_DATA = os.environ.get("MURAKA_REFERENCE", "")   # optional local reference; never distributed
 
 
 def provenance_check(store):
@@ -269,7 +269,7 @@ def main():
         print("      NOTE overlaps not removed (%s) — pip3 install --user skia-pathops"
               % type(e).__name__)
 
-    out = os.path.join(HERE, "%s.ttf" % PSNAME)
+    out = os.path.join(HERE, "..", "..", "fonts", "ttf", "%s.ttf" % PSNAME)
     fb.save(out)
     pts = sum(len(d["coords"]) for d in drawn.values())
     print("TTF   %s" % out)
