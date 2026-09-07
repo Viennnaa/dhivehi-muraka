@@ -13,11 +13,11 @@ Defaults to ~/Downloads/dhivehi_muraka_edits.json (where the browser puts it).
 import array, json, os, sys
 
 HERE = os.path.dirname(os.path.abspath(__file__))
-FAMILY, STYLE, PSNAME = "Dhivehi Font", "Regular", "DhivehiFont-Regular"
+FAMILY, STYLE, PSNAME = "Dhivehi Muraka", "Regular", "DhivehiMuraka-Regular"
 UPM, ASC, DESC, GAP = 2048, 1900, -600, 0     # sum 2500 >= 1.2 em, lineGap 0
 VENDOR = "ASHR"          # TODO register at learn.microsoft.com/typography/vendors
 YEAR, AUTHOR = 2026, "Ashrag Rasheed"
-REPO = "https://github.com/Viennnaa/dhivehi-font"
+REPO = "https://github.com/Viennnaa/dhivehi-muraka"
 COPYRIGHT = "Copyright %d The %s Project Authors (%s)" % (YEAR, FAMILY, REPO)
 OFL_DESC = ("This Font Software is licensed under the SIL Open Font License, "
             "Version 1.1. This license is available with a FAQ at: "

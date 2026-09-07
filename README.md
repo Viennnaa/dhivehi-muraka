@@ -1,4 +1,4 @@
-# Dhivehi Font
+# Dhivehi Muraka
 
 An original Thaana typeface for Dhivehi, covering the complete Unicode Thaana
 block: 24 base consonants, naviyani, the 14 Arabic transliteration letters, and

@@ -8,8 +8,8 @@ python3 build_font.py "$SRC"
 echo "== 2. anchors, GDEF, mark feature =="
 python3 add_features.py
 echo "== 3. OFL Latin =="
-python3 merge_latin.py .cache/latin-source.ttf DhivehiFont-Regular.ttf
+python3 merge_latin.py .cache/latin-source.ttf DhivehiMuraka-Regular.ttf
 echo "== 4. specimen =="
 python3 make_specimen.py
 echo
-echo "Done -> DhivehiFont-Regular.ttf"
+echo "Done -> DhivehiMuraka-Regular.ttf"

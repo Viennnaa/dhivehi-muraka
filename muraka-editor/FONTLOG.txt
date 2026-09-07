@@ -1,11 +1,11 @@
-FONTLOG for Dhivehi Font
+FONTLOG for Dhivehi Muraka
 
-This file provides information on the Dhivehi Font Software.
+This file provides information on the Dhivehi Muraka Software.
 
 Basic Font Information
 ----------------------
 
-Dhivehi Font is an original Thaana typeface covering the full Unicode Thaana
+Dhivehi Muraka is an original Thaana typeface covering the full Unicode Thaana
 block (U+0780 to U+07B1): 24 base consonants, naviyani, the 14 Arabic
 transliteration letters, and all 11 fili.
 
@@ -19,7 +19,7 @@ reference and refuses any glyph sharing coordinates with it.
 ChangeLog
 ---------
 
-7 September 2026 (Ashrag Rasheed) Dhivehi Font v1.000
+7 September 2026 (Ashrag Rasheed) Dhivehi Muraka v1.000
 - All 50 Thaana letters drawn from scratch.
 - Fili made zero-width and attached with GPOS mark-to-base anchors, so vowel
   marks centre on each consonant rather than sitting at a fixed position.

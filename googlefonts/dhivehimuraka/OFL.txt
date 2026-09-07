@@ -1,4 +1,4 @@
-Copyright 2026 The Dhivehi Font Project Authors (https://github.com/Viennnaa/dhivehi-font)
+Copyright 2026 The Dhivehi Muraka Project Authors (https://github.com/Viennnaa/dhivehi-font)
 
 This Font Software is licensed under the SIL Open Font License, Version 1.1.
 This license is copied below, and is also available with a FAQ at:
