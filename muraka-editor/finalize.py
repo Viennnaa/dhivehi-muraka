@@ -105,72 +105,17 @@ def fix_directions(font):
     return fixed
 
 
-def add_kerning(font, lat):
-    """Lift kern pairs for the Latin we merged, from the face we merged it from."""
-    if "GPOS" not in lat:
-        return 0
-    rev = {}
-    for cp, name in font.getBestCmap().items():
-        if name.startswith("lat_"):
-            rev[cp] = name
-    lcmap = lat.getBestCmap()
-    lat2ours = {lcmap[cp]: rev[cp] for cp in rev if cp in lcmap}
-
-    pairs = {}
-    def classdefs(cd):
-        d = {}
-        for g, c in (cd.classDefs.items() if cd else []):
-            d.setdefault(c, []).append(g)
-        return d
-
-    for lk in lat["GPOS"].table.LookupList.Lookup:
-        for st in lk.SubTable:
-            t = getattr(st, "LookupType", None) or lk.LookupType
-            if getattr(st, "Format", None) == 2 and hasattr(st, "Class1Record"):
-                c1, c2 = classdefs(st.ClassDef1), classdefs(st.ClassDef2)
-                cov = set(st.Coverage.glyphs)
-                c1.setdefault(0, [g for g in cov if g not in (st.ClassDef1.classDefs if st.ClassDef1 else {})])
-                for i, r1 in enumerate(st.Class1Record):
-                    for j, r2 in enumerate(r1.Class2Record):
-                        v = getattr(r2.Value1, "XAdvance", 0) if r2.Value1 else 0
-                        if not v:
-                            continue
-                        for a in c1.get(i, []):
-                            for b in c2.get(j, []):
-                                if a in lat2ours and b in lat2ours:
-                                    pairs[(lat2ours[a], lat2ours[b])] = v
-            elif hasattr(st, "PairSet"):
-                for gi, ps in zip(st.Coverage.glyphs, st.PairSet):
-                    for pv in ps.PairValueRecord:
-                        v = getattr(pv.Value1, "XAdvance", 0) if pv.Value1 else 0
-                        if v and gi in lat2ours and pv.SecondGlyph in lat2ours:
-                            pairs[(lat2ours[gi], lat2ours[pv.SecondGlyph])] = v
-    if not pairs:
-        return 0
-    lines = ["feature kern {", "  script latn;"]
-    for (a, b), v in sorted(pairs.items()):
-        lines.append("  pos %s %s %d;" % (a, b, v))
-    lines.append("} kern;")
-    fea = os.path.join(HERE, "kern.fea")
-    open(fea, "w").write("\n".join(lines) + "\n")
-    from fontTools.feaLib.builder import addOpenTypeFeatures
-    addOpenTypeFeatures(font, fea)
-    return len(pairs)
-
-
 def main():
     font = TTFont(TARGET)
     lat = TTFont(LATIN)
     dc = add_dotted_circle(font, lat)
     add_meta(font)
     flipped = fix_directions(font)
-    kp = add_kerning(font, lat)
     font["OS/2"].recalcAvgCharWidth(font)
     font.save(TARGET)
     print("  dotted circle U+25CC : %s" % ("added" if dc else "already present / unavailable"))
     print("  meta table           : dlng dv-Thaa, en-Latn")
     print("  outer contours fixed : %d" % flipped)
-    print("  Latin kern pairs     : %d" % kp)
     print("  xAvgCharWidth        : %d" % font["OS/2"].xAvgCharWidth)
     print("TTF %s" % TARGET)
 

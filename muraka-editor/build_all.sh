@@ -2,15 +2,15 @@
 # One command: drawings -> releasable font.
 set -e
 cd "$(dirname "$0")"
-SRC="${1:-$HOME/Downloads/dhivehi_muraka_edits (7).json}"
+SRC="${1:-../sources/drawings.json}"
 echo "== 1. outlines from your drawings =="
 python3 build_font.py "$SRC"
-echo "== 2. anchors, GDEF, mark feature =="
-python3 add_features.py
-echo "== 3. OFL Latin =="
+echo "== 2. OFL Latin =="
 python3 merge_latin.py .cache/latin-source.ttf DhivehiMuraka-Regular.ttf
-echo "== 4. finalize: dotted circle, meta, kerning, contour direction =="
+echo "== 3. dotted circle, meta, contour direction =="
 python3 finalize.py
+echo "== 4. GDEF, mark anchors, kerning =="
+python3 add_features.py
 echo "== 5. specimen =="
 python3 make_specimen.py
 echo
