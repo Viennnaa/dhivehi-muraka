@@ -4,7 +4,10 @@ An original Thaana typeface for Dhivehi, covering the complete Unicode Thaana
 block: 24 base consonants, naviyani, the 14 Arabic transliteration letters, and
 all 11 fili.
 
-![specimen](documentation/specimen.png)
+![Dhivehi Muraka specimen](documentation/specimen.png)
+
+**[Open the interactive specimen →](https://viennnaa.github.io/dhivehi-muraka/specimen-interactive.html)**
+Type in it, drag the size, and combine any consonant with any fili.
 
 ## Provenance
 
