@@ -17,7 +17,7 @@ subsets: "menu"
 subsets: "thaana"
 source {
   repository_url: "https://github.com/Viennnaa/dhivehi-muraka"
-  commit: ""
+  commit: "319f553733b4416492556e072bb64e5bfe4b1536"
   files {
     source_file: "fonts/ttf/DhivehiMuraka-Regular.ttf"
     dest_file: "DhivehiMuraka-Regular.ttf"
