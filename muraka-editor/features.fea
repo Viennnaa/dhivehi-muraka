@@ -1,0 +1,61 @@
+@BASE = [uni0780 uni0781 uni0782 uni0783 uni0784 uni0785 uni0786 uni0787 uni0788 uni0789 uni078A uni078B uni078C uni078D uni078E uni078F uni0790 uni0791 uni0792 uni0793 uni0794 uni0795 uni0796 uni0797 uni07B1 uni0798 uni0799 uni079A uni079B uni079C uni079D uni079E uni079F uni07A0 uni07A1 uni07A2 uni07A3 uni07A4 uni07A5];
+@MARK = [uni07A6 uni07A7 uni07AA uni07AB uni07AC uni07AD uni07AE uni07AF uni07B0 uni07A8 uni07A9];
+
+table GDEF {
+  GlyphClassDef @BASE, , @MARK, ;
+} GDEF;
+
+feature mark {
+  script thaa;
+  markClass uni07A6 <anchor 679 0> @TOP;
+  markClass uni07A7 <anchor 847 0> @TOP;
+  markClass uni07AA <anchor 836 0> @TOP;
+  markClass uni07AB <anchor 826 0> @TOP;
+  markClass uni07AC <anchor 785 0> @TOP;
+  markClass uni07AD <anchor 686 0> @TOP;
+  markClass uni07AE <anchor 712 0> @TOP;
+  markClass uni07AF <anchor 875 0> @TOP;
+  markClass uni07B0 <anchor 851 0> @TOP;
+  markClass uni07A8 <anchor 372 0> @BOT;
+  markClass uni07A9 <anchor 410 0> @BOT;
+
+  pos base uni0780 <anchor 587 0> mark @TOP <anchor 587 0> mark @BOT;
+  pos base uni0781 <anchor 624 0> mark @TOP <anchor 624 0> mark @BOT;
+  pos base uni0782 <anchor 708 0> mark @TOP <anchor 708 0> mark @BOT;
+  pos base uni0783 <anchor 577 0> mark @TOP <anchor 577 0> mark @BOT;
+  pos base uni0784 <anchor 614 0> mark @TOP <anchor 614 0> mark @BOT;
+  pos base uni0785 <anchor 598 0> mark @TOP <anchor 598 0> mark @BOT;
+  pos base uni0786 <anchor 613 0> mark @TOP <anchor 613 0> mark @BOT;
+  pos base uni0787 <anchor 584 0> mark @TOP <anchor 584 0> mark @BOT;
+  pos base uni0788 <anchor 561 0> mark @TOP <anchor 561 0> mark @BOT;
+  pos base uni0789 <anchor 667 0> mark @TOP <anchor 667 0> mark @BOT;
+  pos base uni078A <anchor 352 0> mark @TOP <anchor 352 0> mark @BOT;
+  pos base uni078B <anchor 425 0> mark @TOP <anchor 425 0> mark @BOT;
+  pos base uni078C <anchor 490 0> mark @TOP <anchor 490 0> mark @BOT;
+  pos base uni078D <anchor 494 0> mark @TOP <anchor 494 0> mark @BOT;
+  pos base uni078E <anchor 572 0> mark @TOP <anchor 572 0> mark @BOT;
+  pos base uni078F <anchor 703 0> mark @TOP <anchor 703 0> mark @BOT;
+  pos base uni0790 <anchor 1018 0> mark @TOP <anchor 1018 0> mark @BOT;
+  pos base uni0791 <anchor 673 0> mark @TOP <anchor 673 0> mark @BOT;
+  pos base uni0792 <anchor 659 0> mark @TOP <anchor 659 0> mark @BOT;
+  pos base uni0793 <anchor 616 0> mark @TOP <anchor 616 0> mark @BOT;
+  pos base uni0794 <anchor 550 0> mark @TOP <anchor 550 0> mark @BOT;
+  pos base uni0795 <anchor 352 0> mark @TOP <anchor 352 0> mark @BOT;
+  pos base uni0796 <anchor 580 0> mark @TOP <anchor 580 0> mark @BOT;
+  pos base uni0797 <anchor 704 0> mark @TOP <anchor 704 0> mark @BOT;
+  pos base uni07B1 <anchor 707 0> mark @TOP <anchor 707 0> mark @BOT;
+  pos base uni0798 <anchor 522 0> mark @TOP <anchor 522 0> mark @BOT;
+  pos base uni0799 <anchor 587 0> mark @TOP <anchor 587 0> mark @BOT;
+  pos base uni079A <anchor 587 0> mark @TOP <anchor 587 0> mark @BOT;
+  pos base uni079B <anchor 425 0> mark @TOP <anchor 425 0> mark @BOT;
+  pos base uni079C <anchor 577 0> mark @TOP <anchor 577 0> mark @BOT;
+  pos base uni079D <anchor 1018 0> mark @TOP <anchor 1018 0> mark @BOT;
+  pos base uni079E <anchor 1018 0> mark @TOP <anchor 1018 0> mark @BOT;
+  pos base uni079F <anchor 1018 0> mark @TOP <anchor 1018 0> mark @BOT;
+  pos base uni07A0 <anchor 490 0> mark @TOP <anchor 490 0> mark @BOT;
+  pos base uni07A1 <anchor 490 0> mark @TOP <anchor 490 0> mark @BOT;
+  pos base uni07A2 <anchor 584 0> mark @TOP <anchor 584 0> mark @BOT;
+  pos base uni07A3 <anchor 584 0> mark @TOP <anchor 584 0> mark @BOT;
+  pos base uni07A4 <anchor 592 0> mark @TOP <anchor 592 0> mark @BOT;
+  pos base uni07A5 <anchor 561 0> mark @TOP <anchor 561 0> mark @BOT;
+} mark;

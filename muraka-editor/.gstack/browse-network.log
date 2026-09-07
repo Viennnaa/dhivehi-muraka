@@ -1,0 +1,5 @@
+[2026-09-07T06:30:12.321Z] GET file:///Users/fa-000567/projects/dhivehi-font/muraka-editor/editor.html → 200 (8ms, 87196B)
+[2026-09-07T06:30:12.340Z] GET file:///Users/fa-000567/projects/dhivehi-font/muraka-editor/opentype.min.js → 200 (148ms, 170905B)
+[2026-09-07T06:30:12.340Z] GET file:///Users/fa-000567/projects/dhivehi-font/muraka-editor/font_data.js → 200 (149ms, 28330B)
+[2026-09-07T06:30:12.340Z] GET file:///Users/fa-000567/projects/dhivehi-font/muraka-editor/font_data.local.js → 200 (149ms, 228950B)
+[2026-09-07T06:30:12.482Z] GET file:///Users/fa-000567/projects/dhivehi-font/muraka-editor/DhivehiFont-Regular.ttf → 200 (4ms, 32067B)

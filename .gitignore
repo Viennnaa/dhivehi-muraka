@@ -1,0 +1,10 @@
+# Reference layer: third-party outlines, never redistributed
+muraka-editor/font_data.local.js
+muraka-editor/.cache/
+refs/
+build/
+proofs/
+sources/_agy_experiment/
+.DS_Store
+__pycache__/
+.gstack/
