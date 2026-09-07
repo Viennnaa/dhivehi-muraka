@@ -122,6 +122,11 @@ button,input,textarea,select{font:inherit;color:inherit}
 .ledger span:first-child{color:var(--ink3)}
 .ledger span:last-child{font-variant-numeric:tabular-nums}
 .ok{color:var(--green)}
+.latin{border-top:1px solid var(--rule)}
+.lat-row{padding:16px 0;border-bottom:1px solid var(--rule2);line-height:1.45;
+  overflow-x:auto;white-space:nowrap;color:var(--ink)}
+.lat-mix{padding:22px 0 4px;font-size:22px;color:var(--ink2);line-height:1.7}
+.lat-mix .dv{font-family:'Dhivehi Muraka',serif;color:var(--ink)}
 footer{padding:44px 0 64px;color:var(--ink3);font-size:13px;display:flex;justify-content:space-between;
   gap:16px;flex-wrap:wrap;border-top:1px solid var(--rule2)}
 footer a{color:var(--accent);text-decoration:none}
@@ -214,6 +219,24 @@ footer a:hover{text-decoration:underline}
   <div class="grid" id="mapArab"></div>
   <div class="sub">Fili — shown on ހ</div>
   <div class="grid" id="mapFili"></div>
+</section>
+
+<section class="wrap">
+  <div class="hd">
+    <h2>The Latin</h2>
+    <p class="note">Dhivehi text is full of Latin — names, dates, rufiyaa figures, URLs.
+      These 200 glyphs are <b>Inter</b>, by Rasmus Andersson, merged under the same open
+      licence and credited in the font's name table. No Thaana glyph comes from it.</p>
+  </div>
+  <div class="latin">
+    <div class="lat-row" style="font-size:44px">ABCDEFGHIJKLMNOPQRSTUVWXYZ</div>
+    <div class="lat-row" style="font-size:44px">abcdefghijklmnopqrstuvwxyz</div>
+    <div class="lat-row" style="font-size:38px">0123456789</div>
+    <div class="lat-row" style="font-size:26px">. , : ; ! ? &amp; @ # % ( ) [ ] { } / \ * + &minus; = &lt; &gt; &ldquo; &rdquo; &lsquo; &rsquo; &ndash; &mdash;</div>
+    <div class="lat-row" style="font-size:26px">&Agrave;&agrave; &Acirc;&acirc; &Auml;&auml; &Ccedil;&ccedil; &Eacute;&eacute; &Egrave;&egrave; &Iuml;&iuml; &Ocirc;&ocirc; &Ouml;&ouml; &Ugrave;&ugrave; &Uuml;&uuml; &Ntilde;&ntilde; &Scaron;&scaron; &Zcaron;&zcaron; &OElig;&oelig; &szlig;</div>
+    <div class="lat-row" style="font-size:26px">&euro; &pound; &yen; &cent; &copy; &reg; &trade; &sect; &deg; &plusmn; &times; &divide; &laquo; &raquo; &iquest; &iexcl;</div>
+    <div class="lat-mix">Mal&eacute;, 7 September 2026 &mdash; <span class="dv">&#x078B;&#x07A8;&#x0788;&#x07AC;&#x0780;&#x07A8; &#x0789;&#x07AA;&#x0783;&#x07A6;&#x0786;&#x07A6;</span> &mdash; Rf&nbsp;1,250.00</div>
+  </div>
 </section>
 
 <section class="wrap">
