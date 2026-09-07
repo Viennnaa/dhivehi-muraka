@@ -9,7 +9,9 @@ echo "== 2. anchors, GDEF, mark feature =="
 python3 add_features.py
 echo "== 3. OFL Latin =="
 python3 merge_latin.py .cache/latin-source.ttf DhivehiMuraka-Regular.ttf
-echo "== 4. specimen =="
+echo "== 4. finalize: dotted circle, meta, kerning, contour direction =="
+python3 finalize.py
+echo "== 5. specimen =="
 python3 make_specimen.py
 echo
 echo "Done -> DhivehiMuraka-Regular.ttf"

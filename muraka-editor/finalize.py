@@ -1,0 +1,179 @@
+#!/usr/bin/env python3
+"""
+finalize.py — last pass before submission.
+
+  · U+25CC dotted circle (a mark-using script needs one)
+  · `meta` table declaring the scripts and languages the font is for
+  · Latin kerning lifted from the OFL Latin source
+  · correct outer-contour direction
+  · recalculated xAvgCharWidth
+"""
+import os, sys
+from fontTools.ttLib import TTFont, newTable
+from fontTools.pens.ttGlyphPen import TTGlyphPen
+from fontTools.pens.recordingPen import DecomposingRecordingPen
+
+HERE = os.path.dirname(os.path.abspath(__file__))
+TARGET = sys.argv[1] if len(sys.argv) > 1 else os.path.join(HERE, "DhivehiMuraka-Regular.ttf")
+LATIN = sys.argv[2] if len(sys.argv) > 2 else os.path.join(HERE, ".cache", "latin-source.ttf")
+
+
+def add_dotted_circle(font, lat):
+    if 0x25CC in font.getBestCmap():
+        return False
+    src = lat.getBestCmap().get(0x25CC)
+    if not src:
+        return draw_dotted_circle(font)
+    rec = DecomposingRecordingPen(lat.getGlyphSet())
+    lat.getGlyphSet()[src].draw(rec)
+    pen = TTGlyphPen(None); rec.replay(pen)
+    g = pen.glyph()
+    name = "uni25CC"
+    font["glyf"][name] = g
+    g.recalcBounds(font["glyf"])
+    font["hmtx"][name] = (lat["hmtx"][src][0], g.xMin)
+    font.setGlyphOrder(list(font["glyf"].glyphOrder))
+    for sub in font["cmap"].tables:
+        if sub.isUnicode():
+            sub.cmap[0x25CC] = name
+    return True
+
+
+def draw_dotted_circle(font):
+    """A ring of dots, the placeholder a combining mark sits on when shown alone."""
+    import math
+    pen = TTGlyphPen(None)
+    R, r, N = 620, 62, 12
+    for i in range(N):
+        a = 2 * math.pi * i / N + math.pi / 2
+        cx, cy = R * math.cos(a), 560 + R * math.sin(a)
+        k = r / math.cos(math.pi / 8)
+        ring = []
+        for j in range(16):
+            t = j * math.pi / 8
+            rad = r if j % 2 == 0 else k
+            ring.append((round(cx + rad * math.cos(t)), round(cy + rad * math.sin(t))))
+        pen.moveTo(ring[0])
+        for q in ring[1:]:
+            pen.lineTo(q)
+        pen.closePath()
+    g = pen.glyph()
+    name = "uni25CC"
+    font["glyf"][name] = g
+    g.recalcBounds(font["glyf"])
+    font["hmtx"][name] = (2 * R + 2 * r + 120, g.xMin)
+    font.setGlyphOrder(list(font["glyf"].glyphOrder))
+    for sub in font["cmap"].tables:
+        if sub.isUnicode():
+            sub.cmap[0x25CC] = name
+    return True
+
+
+def add_meta(font):
+    m = newTable("meta")
+    m.data = {"dlng": "dv-Thaa, en-Latn", "slng": "Thaa, Latn"}
+    font["meta"] = m
+
+
+def fix_directions(font):
+    """TrueType wants outer contours clockwise (negative area in font space)."""
+    glyf = font["glyf"]; fixed = 0
+    for name in glyf.keys():
+        g = glyf[name]
+        if g.numberOfContours <= 0:
+            continue
+        g.expand(glyf)
+        starts = [0] + [e + 1 for e in g.endPtsOfContours[:-1]]
+        rings = []
+        for s, e in zip(starts, g.endPtsOfContours):
+            pts = [tuple(p) for p in g.coordinates[s:e + 1]]
+            flags = list(g.flags[s:e + 1])
+            a = sum(pts[i][0] * pts[(i + 1) % len(pts)][1] - pts[(i + 1) % len(pts)][0] * pts[i][1]
+                    for i in range(len(pts))) / 2.0
+            rings.append([pts, flags, a])
+        # biggest ring is the outer one; it must be clockwise
+        big = max(range(len(rings)), key=lambda i: abs(rings[i][2]))
+        if rings[big][2] > 0:
+            import array
+            from fontTools.ttLib.tables._g_l_y_f import GlyphCoordinates
+            coords, flg = [], []
+            for pts, f, _ in rings:
+                coords += pts[::-1]; flg += f[::-1]
+            g.coordinates = GlyphCoordinates(coords)
+            g.flags = array.array("B", flg)
+            fixed += 1
+    return fixed
+
+
+def add_kerning(font, lat):
+    """Lift kern pairs for the Latin we merged, from the face we merged it from."""
+    if "GPOS" not in lat:
+        return 0
+    rev = {}
+    for cp, name in font.getBestCmap().items():
+        if name.startswith("lat_"):
+            rev[cp] = name
+    lcmap = lat.getBestCmap()
+    lat2ours = {lcmap[cp]: rev[cp] for cp in rev if cp in lcmap}
+
+    pairs = {}
+    def classdefs(cd):
+        d = {}
+        for g, c in (cd.classDefs.items() if cd else []):
+            d.setdefault(c, []).append(g)
+        return d
+
+    for lk in lat["GPOS"].table.LookupList.Lookup:
+        for st in lk.SubTable:
+            t = getattr(st, "LookupType", None) or lk.LookupType
+            if getattr(st, "Format", None) == 2 and hasattr(st, "Class1Record"):
+                c1, c2 = classdefs(st.ClassDef1), classdefs(st.ClassDef2)
+                cov = set(st.Coverage.glyphs)
+                c1.setdefault(0, [g for g in cov if g not in (st.ClassDef1.classDefs if st.ClassDef1 else {})])
+                for i, r1 in enumerate(st.Class1Record):
+                    for j, r2 in enumerate(r1.Class2Record):
+                        v = getattr(r2.Value1, "XAdvance", 0) if r2.Value1 else 0
+                        if not v:
+                            continue
+                        for a in c1.get(i, []):
+                            for b in c2.get(j, []):
+                                if a in lat2ours and b in lat2ours:
+                                    pairs[(lat2ours[a], lat2ours[b])] = v
+            elif hasattr(st, "PairSet"):
+                for gi, ps in zip(st.Coverage.glyphs, st.PairSet):
+                    for pv in ps.PairValueRecord:
+                        v = getattr(pv.Value1, "XAdvance", 0) if pv.Value1 else 0
+                        if v and gi in lat2ours and pv.SecondGlyph in lat2ours:
+                            pairs[(lat2ours[gi], lat2ours[pv.SecondGlyph])] = v
+    if not pairs:
+        return 0
+    lines = ["feature kern {", "  script latn;"]
+    for (a, b), v in sorted(pairs.items()):
+        lines.append("  pos %s %s %d;" % (a, b, v))
+    lines.append("} kern;")
+    fea = os.path.join(HERE, "kern.fea")
+    open(fea, "w").write("\n".join(lines) + "\n")
+    from fontTools.feaLib.builder import addOpenTypeFeatures
+    addOpenTypeFeatures(font, fea)
+    return len(pairs)
+
+
+def main():
+    font = TTFont(TARGET)
+    lat = TTFont(LATIN)
+    dc = add_dotted_circle(font, lat)
+    add_meta(font)
+    flipped = fix_directions(font)
+    kp = add_kerning(font, lat)
+    font["OS/2"].recalcAvgCharWidth(font)
+    font.save(TARGET)
+    print("  dotted circle U+25CC : %s" % ("added" if dc else "already present / unavailable"))
+    print("  meta table           : dlng dv-Thaa, en-Latn")
+    print("  outer contours fixed : %d" % flipped)
+    print("  Latin kern pairs     : %d" % kp)
+    print("  xAvgCharWidth        : %d" % font["OS/2"].xAvgCharWidth)
+    print("TTF %s" % TARGET)
+
+
+if __name__ == "__main__":
+    main()
