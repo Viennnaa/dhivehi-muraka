@@ -18,6 +18,7 @@ ARAB = [(0x798,"ttaa"),(0x799,"hhaa"),(0x79A,"khaa"),(0x79B,"thaalu"),(0x79C,"za
 FILI = [(0x7A6,"abafili"),(0x7A7,"aabaafili"),(0x7A8,"ibifili"),(0x7A9,"eebeefili"),
         (0x7AA,"ubufili"),(0x7AB,"ooboofili"),(0x7AC,"ebefili"),(0x7AD,"eybeyfili"),
         (0x7AE,"obofili"),(0x7AF,"oaboafili"),(0x7B0,"sukun")]
+CURR = [(0x20C2,"rufiyaa sign")]
 
 WORDS = ["ދިވެހި ރާއްޖެ",
          "ދިވެހި ބަހުން ލިޔެފައިވާ ފޮތެއް",
@@ -34,7 +35,10 @@ def cell(cp, nm):
 grid = lambda xs: "".join(cell(c, n) for c, n in xs)
 ramp = "".join('<div style="font-size:%dpx">ދިވެހި ބަސް %d</div>' % (px, px)
                for px in (12, 14, 16, 20, 28, 40))
-n = len(have)
+n = len([c for c in have if 0x780 <= c <= 0x7B1])   # letters only: the counts below are of 50
+curr = ('<h2>Rufiyaa sign</h2><div class="grid">%s</div>\n'
+        '<div class="words" style="direction:ltr;text-align:left;font-size:34px">%s</div>'
+        % (grid(CURR), "⃂1,349     ⃂99.50")) if 0x20C2 in have else ""
 
 html = """<meta charset="utf-8"><title>Dhivehi Muraka — specimen</title>
 <style>
@@ -77,13 +81,14 @@ h2{font-size:12px;text-transform:uppercase;letter-spacing:1px;color:#888;
 <h2>Consonants</h2><div class="grid">%s</div>
 <h2>Arabic transliteration letters</h2><div class="grid">%s</div>
 <h2>Fili — shown on ހ</h2><div class="grid">%s</div>
+%s
 <p class="legend"><span class="k"></span>not drawn yet</p>
 <p class="ts">rebuilt %s · %d letters</p>
 """ % (int(time.time()), n,
        sum(1 for c, _ in CONS if c in have), sum(1 for c, _ in ARAB if c in have),
        sum(1 for c, _ in FILI if c in have), 50 - n,
        WORDS[0], WORDS[1], WORDS[2], ramp,
-       grid(CONS), grid(ARAB), grid(FILI),
+       grid(CONS), grid(ARAB), grid(FILI), curr,
        time.strftime("%d %b %Y, %H:%M"), n)
 
 out = os.path.join(HERE, "..", "..", "docs", "specimen.html")

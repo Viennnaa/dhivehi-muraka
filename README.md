@@ -2,7 +2,7 @@
 
 An original Thaana typeface for Dhivehi, covering the complete Unicode Thaana
 block: 24 base consonants, naviyani, the 14 Arabic transliteration letters, and
-all 11 fili.
+all 11 fili. It also draws the Rufiyaa sign (U+20C2), new in Unicode 18.0.
 
 ![Dhivehi Muraka specimen](documentation/specimen.png)
 
@@ -45,7 +45,7 @@ then the Latin merge, then the specimen.
 
 2048 upm · fsType 0 · OS/2 v4 · USE_TYPO_METRICS · italic angle 0
 GDEF glyph classes · GPOS `mark` feature under the `thaa` script
-252 glyphs · 50 Thaana · 200 Latin · 5,020 kern pairs
+253 glyphs · 50 Thaana · Rufiyaa sign · 200 Latin · 5,020 kern pairs
 FontBakery `check-googlefonts`: 0 FAIL, 152 PASS
 
 ## Licence

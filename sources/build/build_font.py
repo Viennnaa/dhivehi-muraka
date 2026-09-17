@@ -14,6 +14,7 @@ import array, json, os, sys
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 FAMILY, STYLE, PSNAME = "Dhivehi Muraka", "Regular", "DhivehiMuraka-Regular"
+VERSION = "1.001"        # name IDs 3 and 5 and head.fontRevision, kept in step
 UPM, ASC, DESC, GAP = 2048, 1900, -600, 0     # sum 2500 >= 1.2 em, lineGap 0
 VENDOR = "ASHR"          # TODO register at learn.microsoft.com/typography/vendors
 YEAR, AUTHOR = 2026, "Ashrag Rasheed"
@@ -229,9 +230,9 @@ def main():
     fb.setupNameTable({
         "copyright": COPYRIGHT,
         "familyName": FAMILY, "styleName": STYLE,
-        "uniqueFontIdentifier": "%s;1.000" % PSNAME,
+        "uniqueFontIdentifier": "%s;%s" % (PSNAME, VERSION),
         "fullName": "%s %s" % (FAMILY, STYLE),
-        "version": "Version 1.000", "psName": PSNAME,
+        "version": "Version %s" % VERSION, "psName": PSNAME,
         "designer": AUTHOR, "manufacturer": AUTHOR,
         "licenseDescription": OFL_DESC,
         "licenseInfoURL": "https://openfontlicense.org"})
@@ -243,6 +244,7 @@ def main():
                 sxHeight=1024, sCapHeight=1400,
                 fsSelection=0x40 | 0x80, achVendID=VENDOR)
     fb.setupPost(italicAngle=0)
+    fb.font["head"].fontRevision = float(VERSION)   # must match name IDs 3 and 5
 
     from fontTools.ttLib import newTable
     from fontTools.ttLib.tables import ttProgram as _tp

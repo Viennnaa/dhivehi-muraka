@@ -7,7 +7,8 @@ Basic Font Information
 
 Dhivehi Muraka is an original Thaana typeface covering the full Unicode Thaana
 block (U+0780 to U+07B1): 24 base consonants, naviyani, the 14 Arabic
-transliteration letters, and all 11 fili.
+transliteration letters, and all 11 fili. It also draws the Rufiyaa sign
+(U+20C2), the Maldivian currency symbol encoded in Unicode 18.0.
 
 Every outline was drawn by hand from scratch. No existing font was opened,
 imported, traced or used as a source of coordinates at any point in the
@@ -18,6 +19,13 @@ reference and refuses any glyph sharing coordinates with it.
 
 ChangeLog
 ---------
+
+17 September 2026 (Ashrag Rasheed) Dhivehi Muraka v1.001
+- Added the Rufiyaa sign (U+20C2), encoded in Unicode 18.0: the letter raa
+  with a second parallel bar, following the Maldives Monetary Authority's
+  published construction for the symbol. Drawn by hand like every other
+  outline here.
+- Vertical metrics, and every other glyph, unchanged from v1.000.
 
 7 September 2026 (Ashrag Rasheed) Dhivehi Muraka v1.000
 - All 50 Thaana letters drawn from scratch.
