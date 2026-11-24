@@ -17,36 +17,55 @@ font was opened, imported, traced, or used as a source of coordinates.
 An existing Thaana face was shown on screen as a proportion reference while
 drawing — the way a printed specimen would be — but none of its outlines are
 present here, and that reference layer is not distributed with this repository.
-The build verifies this on every run: each glyph is compared against the
-reference and any letter sharing coordinates with it is refused, not shipped.
+Letters drawn in the Muraka editor enter the source through
+`scripts/import_drawings.py`, which compares each one against the reference and
+refuses any letter sharing coordinates with it.
 
 Latin glyphs come from [Inter](https://github.com/rsms/inter) under the OFL, and
 are credited in the font's name table.
 
 ## Layout
 
-    fonts/ttf/                  the built font
-    sources/drawings.json       the drawings — every point, the actual source
-    sources/build/              the scripts that turn drawings into a font
-    sources/latin/              the OFL Latin merged in
-    documentation/              specimen image
-    docs/                       the browsable specimen, served by GitHub Pages
-    googlefonts/dhivehimuraka/  Google Fonts submission directory
+    sources/DhivehiMuraka-Regular.ufo   the source: outlines, anchors, kerning
+    sources/config.yaml                 gftools builder recipe
+    scripts/                            build, editor import, specimen tools
+    fonts/ttf/                          the built font
+    documentation/                      specimen image
+    docs/                               the browsable specimen, served by GitHub Pages
+    googlefonts/dhivehimuraka/          Google Fonts submission directory
 
 ## Building
 
-    pip install -r requirements.txt
-    ./sources/build/build_all.sh sources/drawings.json
+Needs Python 3.11 or newer.
 
-Four steps: outlines from the drawings, then anchors and the `mark` feature,
-then the Latin merge, then the specimen.
+    python3 -m venv venv
+    . venv/bin/activate
+    pip install -r requirements.txt
+    scripts/build.sh
+
+`scripts/build.sh` runs `gftools builder sources/config.yaml` (fontmake,
+overlaps removed with skia-pathops, unhinted with `gasp` and smart dropout
+control), then copies the font into `docs/` and `googlefonts/` and refreshes the
+specimen pages.
+
+## Editing
+
+The UFO opens in any UFO editor, such as Fontra or FontForge. The outlines are
+quadratic (TrueType) curves, as they were drawn; keep them quadratic. The `mark`
+feature, `kern` feature and GDEF classes are generated at build time from the
+glyph anchors, the kerning and `public.openTypeCategories`.
+
+To draw in the Muraka editor instead, export JSON from it and import the
+letters:
+
+    python3 scripts/import_drawings.py ~/Downloads/dhivehi_muraka_edits.json [uni0780 ...]
 
 ## Technical
 
 2048 upm · fsType 0 · OS/2 v4 · USE_TYPO_METRICS · italic angle 0
-GDEF glyph classes · GPOS `mark` feature under the `thaa` script
+GDEF glyph classes · GPOS `mark` (fili on every letter and the dotted circle) and `kern` (Latin)
 253 glyphs · 50 Thaana · Rufiyaa sign · 200 Latin · 5,020 kern pairs
-FontBakery `check-googlefonts`: 0 FAIL, 152 PASS
+FontBakery 1.1 `check-googlefonts` on the font: 0 FAIL, 153 PASS
 
 ## Licence
 

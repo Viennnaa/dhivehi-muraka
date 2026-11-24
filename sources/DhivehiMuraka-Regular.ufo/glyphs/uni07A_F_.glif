@@ -1,0 +1,44 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<glyph name="uni07AF" format="2">
+  <unicode hex="07AF"/>
+  <anchor x="875" y="0" name="_top"/>
+  <outline>
+    <contour>
+      <point x="822" y="1236"/>
+      <point x="897" y="1222"/>
+      <point x="1070" y="1294"/>
+      <point x="1258" y="1421"/>
+      <point x="1399" y="1615"/>
+      <point x="1398" y="1776"/>
+      <point x="1321" y="1867"/>
+      <point x="1162" y="1895"/>
+      <point x="964" y="1843"/>
+      <point x="769" y="1741"/>
+      <point x="561" y="1579"/>
+      <point x="408" y="1398"/>
+      <point x="351" y="1231"/>
+      <point x="367" y="1124"/>
+      <point x="453" y="1033"/>
+      <point x="565" y="1023"/>
+      <point x="660" y="1029"/>
+      <point x="747" y="1096"/>
+      <point x="747" y="1151"/>
+      <point x="715" y="1218"/>
+      <point x="580" y="1169"/>
+      <point x="507" y="1201"/>
+      <point x="518" y="1279"/>
+      <point x="560" y="1371"/>
+      <point x="659" y="1485"/>
+      <point x="778" y="1579"/>
+      <point x="880" y="1645"/>
+      <point x="996" y="1701"/>
+      <point x="1106" y="1746"/>
+      <point x="1206" y="1742"/>
+      <point x="1253" y="1715"/>
+      <point x="1248" y="1653"/>
+      <point x="1218" y="1587"/>
+      <point x="1076" y="1466"/>
+      <point x="853" y="1354"/>
+    </contour>
+  </outline>
+</glyph>

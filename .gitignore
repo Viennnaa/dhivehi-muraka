@@ -12,3 +12,6 @@ muraka-editor/
 tools/
 editor.html
 starter-haa.json
+sources/build.ninja
+sources/.ninja_log
+venv/

@@ -1,3 +1,2 @@
-fonttools>=4.50
-ufoLib2>=0.16
-skia-pathops>=0.8
+gftools==0.10.8
+fontmake[pathops]==3.12.2

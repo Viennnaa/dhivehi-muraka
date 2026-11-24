@@ -1,0 +1,16 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<glyph name="uni07A6" format="2">
+  <unicode hex="07A6"/>
+  <anchor x="679" y="0" name="_top"/>
+  <outline>
+    <contour>
+      <point x="939" y="1473"/>
+      <point x="421" y="1184"/>
+      <point x="336" y="995"/>
+      <point x="643" y="1133"/>
+      <point x="892" y="1256"/>
+      <point x="1015" y="1348"/>
+      <point x="1022" y="1443"/>
+    </contour>
+  </outline>
+</glyph>

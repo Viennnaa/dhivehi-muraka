@@ -1,0 +1,13 @@
+sources:
+  - DhivehiMuraka-Regular.ufo
+familyName: Dhivehi Muraka
+buildVariable: false
+buildStatic: true
+buildTTF: true
+buildOTF: false
+buildWebfont: false
+autohintTTF: false
+outputDir: ../fonts
+# The outlines are quadratic (TrueType curves, as drawn). fontmake's default
+# overlap remover only handles cubic curves; skia-pathops handles both.
+extraFontmakeArgs: "--overlaps-backend pathops"

@@ -1,0 +1,6 @@
+# fontmake writes the kern and mark features and the GDEF glyph classes from the
+# kerning, the glyph anchors and public.openTypeCategories. Only the language
+# systems are declared here.
+languagesystem DFLT dflt;
+languagesystem latn dflt;
+languagesystem thaa dflt;

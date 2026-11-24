@@ -30,5 +30,6 @@ source {
     source_file: "DESCRIPTION.en_us.html"
     dest_file: "DESCRIPTION.en_us.html"
   }
+  config_yaml: "sources/config.yaml"
 }
 primary_script: "Thaa"

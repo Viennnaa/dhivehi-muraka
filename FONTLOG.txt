@@ -14,11 +14,23 @@ Every outline was drawn by hand from scratch. No existing font was opened,
 imported, traced or used as a source of coordinates at any point in the
 build. Faruma was displayed on screen as a proportion reference while
 drawing, in the way a printed specimen would be; none of its outlines are
-present in this font. Each build re-checks every letter against that
-reference and refuses any glyph sharing coordinates with it.
+present in this font. Every letter imported from the drawing editor is
+checked against that reference, and any glyph sharing coordinates with it is
+refused.
 
 ChangeLog
 ---------
+
+24 November 2026 (Ashrag Rasheed) Dhivehi Muraka v1.002
+- Source moved to a UFO (sources/DhivehiMuraka-Regular.ufo), built with
+  gftools builder and fontmake, as Google Fonts requires. It holds the same
+  hand-placed points: every Thaana outline matches v1.001 exactly, and Thaana
+  and Latin text shape identically.
+- The dotted circle (U+25CC) now sits inside its own advance width instead of
+  overhanging the glyph before it, so fili shown on it no longer collide with
+  neighbouring text.
+- Underline and strikeout metrics set from Inter; OS/2 Unicode ranges filled
+  in; the .notdef side bearing corrected.
 
 17 September 2026 (Ashrag Rasheed) Dhivehi Muraka v1.001
 - Added the Rufiyaa sign (U+20C2), encoded in Unicode 18.0: the letter raa

@@ -1,0 +1,15 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<glyph name="uni07A8" format="2">
+  <unicode hex="07A8"/>
+  <anchor x="372" y="0" name="_bottom"/>
+  <outline>
+    <contour>
+      <point x="604" y="-329"/>
+      <point x="128" y="-608"/>
+      <point x="47" y="-807"/>
+      <point x="426" y="-606"/>
+      <point x="661" y="-474"/>
+      <point x="698" y="-363"/>
+    </contour>
+  </outline>
+</glyph>

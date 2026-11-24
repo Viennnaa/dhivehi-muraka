@@ -1,0 +1,33 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<glyph name="uni07AC" format="2">
+  <unicode hex="07AC"/>
+  <anchor x="785" y="0" name="_top"/>
+  <outline>
+    <contour>
+      <point x="832" y="1557"/>
+      <point x="712" y="1462"/>
+      <point x="604" y="1361"/>
+      <point x="562" y="1268"/>
+      <point x="544" y="1204"/>
+      <point x="562" y="1120"/>
+      <point x="622" y="1067"/>
+      <point x="710" y="1042"/>
+      <point x="807" y="1042"/>
+      <point x="885" y="1035"/>
+      <point x="994" y="1054"/>
+      <point x="1026" y="1086"/>
+      <point x="1024" y="1162"/>
+      <point x="996" y="1201"/>
+      <point x="909" y="1201"/>
+      <point x="855" y="1194"/>
+      <point x="793" y="1185"/>
+      <point x="740" y="1192"/>
+      <point x="724" y="1241"/>
+      <point x="793" y="1328"/>
+      <point x="883" y="1377"/>
+      <point x="943" y="1428"/>
+      <point x="955" y="1488"/>
+      <point x="906" y="1552"/>
+    </contour>
+  </outline>
+</glyph>
